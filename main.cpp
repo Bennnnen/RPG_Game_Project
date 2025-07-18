@@ -24,7 +24,7 @@ int main() {
 
 
 
-#include "GameEngine.h"
+/*#include "GameEngine.h"
 
 int main() {
     GameEngine engine;
@@ -32,5 +32,5 @@ int main() {
     engine.run();
     engine.shutdown();
     return 0;
-}
+}*/
 

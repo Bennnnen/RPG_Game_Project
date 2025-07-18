@@ -1,3 +1,6 @@
+#ifndef EQUIPMENT_H
+#define EQUIPMENT_H
+
 #include <iostream>
 #include <string>
 
@@ -11,3 +14,5 @@ public:
     int defenseBonus = 0;
     int durability = 0;
 };
+
+#endif

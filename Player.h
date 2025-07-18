@@ -1,3 +1,6 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #include <iostream>
 #include "Character.h"
 #include <map>
@@ -51,6 +54,8 @@ private:
     map<string, double> resources_;
     vector<Equipment> inventory_;
 };
+
+#endif
 
 
 

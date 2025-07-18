@@ -29,7 +29,7 @@ string NPC::getHelp() const {
     return ss.str();
 }
 
-bool NPC::isAvailable() const{}
+bool NPC::isAvailable() const{ return false;}
 
 void NPC::setAvailable(bool avail){}
 

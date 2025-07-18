@@ -1,3 +1,6 @@
+#ifndef NPC_H
+#define NPC_H
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -12,19 +15,20 @@ class NPC {
 public:
     NPC(const string& name,
         const string& description,
-        const string& systemPrompt);
-    virtual ~NPC();
+        const string& systemPrompt)
+        :name_(name), description_(description), systemPrompt_(systemPrompt){};
+    virtual ~NPC() = default;
 
     // 属性访问
     string getName() const;
     string getDescription() const;
-    string getSystemPrompt() const;
+    // string getSystemPrompt() const;
     bool isAvailable() const;
     void setAvailable(bool avail);
 
     // 话题管理
     void addTopic(const std::string& topic);
-    vector<string> getAvailableTopics() const;
+    // vector<string> getAvailableTopics() const;
 
     // 对话接口
     virtual string getGreeting() const;
@@ -38,3 +42,5 @@ protected:
     vector<string> availableTopics_;
     bool isAvailable_;
 };
+
+#endif

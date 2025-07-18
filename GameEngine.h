@@ -1,3 +1,6 @@
+#ifndef GAMEENGINE_H
+#define GAMEENGINE_H
+
 #include <iostream>
 #include <memory>
 #include "Player.h"
@@ -12,7 +15,7 @@ class GameEngine
 private:
     unique_ptr<Player> player_;
     unique_ptr<OpenAIClient> openAIClient_;
-    void initializeNPCs();
+    // void initializeNPCs();
     map<std::string, NPC*> npcMap_;
     vector<unique_ptr<NPC>> npcs_;
     bool isRunning_;
@@ -21,14 +24,15 @@ public:
     bool initialize(); 
     void run();
     void shutdown(); 
-    void showNPCMenu() const;                     // 显示可交互的 NPC 列表
-    void listAvailableNPCs() const;               // 同上
-    NPC* findNPC(const std::string& name) const;  // 名字查 NPC
-    void startConversation(NPC* npc);             // 切换到和某 NPC 对话
-    void endConversation();                       // 结束当前对话
+    // void showNPCMenu() const;                     // 显示可交互的 NPC 列表
+    // void listAvailableNPCs() const;               // 同上
+    // NPC* findNPC(const std::string& name) const;  // 名字查 NPC
+    // void startConversation(NPC* npc);             // 切换到和某 NPC 对话
+    // void endConversation();                       // 结束当前对话
     void handlePlayerInput(const std::string& input);
 };
 
+#endif
 
 
 

@@ -1,3 +1,6 @@
+#ifndef SHOPKEEPERNPC_H
+#define SHOPKEEPERNPC_H
+
 #include "NPC.h"
 #include "Equipment.h"
 #include <map>
@@ -35,3 +38,5 @@ private:
     map<std::string, InventoryItem> inventory_;
     bool inventoryGenerated_{false};
 };
+
+#endif
