@@ -19,6 +19,7 @@ private:
     unique_ptr<OpenAIClient> openAIClient_;
     map<std::string, NPC*> npcMap_;
     vector<unique_ptr<NPC>> npcs_;
+    NPC* currentNPC_;
     bool isRunning_;
     bool inConversation_ = false;
     void initializeNPCs();      // 加载并注册所有 NPC
