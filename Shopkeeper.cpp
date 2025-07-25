@@ -50,31 +50,32 @@ void ShopkeeperNPC::generateInventory(OpenAIClient* aiClient) {
     
 }
 
-    string ShopkeeperNPC::buyItem(const string& itemName) {
+   std::string ShopkeeperNPC::buyItem(const std::string& itemName) {
     auto it = inventory_.find(itemName);
     if (it == inventory_.end()) {
         return "商品不存在：" + itemName;
     }
 
     int price = it->second.price;
-    // if (player_->getResource("Gold") < price) {
-    //     return "金币不足，无法购买 " + itemName;
-    // }
+    if (player_->getResource("money") < price) {
+        // 字符串字面量要先转 std::string
+        return std::string("金币不足，无法购买 ") + itemName;
+    }
 
-    // // 扣除金币
-    // player_->consumeResource("Gold", price);
-    // // 克隆并发放装备
-    // Equipment eq = it->second.equipTemplate;
-    // player_->addEquipment(eq);
+    // 扣除金币
+    player_->consumeResource("money", price);
 
-    // ostringstream oss;
-    // oss << "成功购买：" << itemName
-    //     << "（花费 " << price << " 金币，"
-    //     << "攻+" << eq.attackBonus
-    //     << ", 防+" << eq.defenseBonus
-    //     << ", 耐久 " << eq.durability << "）";
-    // return oss.str();
-    return "";
+    // 克隆并发放装备
+    Equipment eq = it->second.equipTemplate;
+    player_->addEquipment(eq);
+
+    std::ostringstream oss;
+    oss << "成功购买：" << itemName
+        << "（花费 " << price << " 金币，"
+        << "攻+" << eq.attackBonus
+        << ", 防+" << eq.defenseBonus
+        << "）";         
+    return oss.str();
 }
 
 

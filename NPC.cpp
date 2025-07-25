@@ -29,8 +29,22 @@ string NPC::getHelp() const {
     return ss.str();
 }
 
-bool NPC::isAvailable() const{ return false;}
+string NPC::getSystemPrompt() const {
+    return systemPrompt_;
+}
 
-void NPC::setAvailable(bool avail){}
+bool NPC::isAvailable() const{
+    return false;
+}
 
-void NPC::addTopic(const std::string &topic){}
+void NPC::setAvailable(bool avail){
+
+}
+
+void NPC::addTopic(const std::string &topic){
+
+}
+
+vector<string> NPC::getAvailableTopics() const {
+    return availableTopics_;
+}
