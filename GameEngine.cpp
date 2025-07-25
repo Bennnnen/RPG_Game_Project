@@ -52,7 +52,7 @@ void GameEngine::showResources() const
 void GameEngine::showInventory() const
 {
     cout << "玩家背包：" << endl;
-    const auto& items = player_->getInventory();  // :contentReference[oaicite:5]{index=5}
+    const auto& items = player_->getInventory();  
     if (items.empty()) {
         cout << "背包为空。" << endl;
     } else {
@@ -107,7 +107,7 @@ void GameEngine::handlePlayerInput(const string& input)
                 currentNPC_    = it->second;
                 inConversation_ = true;
                 // 打招呼并显示话题
-                cout << currentNPC_->getGreeting() << endl; // :contentReference[oaicite:6]{index=6}
+                cout << currentNPC_->getGreeting() << endl; 
                 cout << currentNPC_->getHelp() << endl;
             } else {
                 cout << "无法找到 NPC：" << target << endl;
@@ -132,7 +132,7 @@ void GameEngine::handlePlayerInput(const string& input)
             inConversation_ = false;
             currentNPC_ = nullptr;
         } else {
-            // 转给 NPC 处理（如商店的“查看商品”、“购买 <商品名>”等） :contentReference[oaicite:7]{index=7}
+            // 转给 NPC 处理（如商店的“查看商品”、“购买 <商品名>”等）
             auto resp = currentNPC_->respondToPlayer(input, openAIClient_.get());
             cout << resp << endl;
         }
