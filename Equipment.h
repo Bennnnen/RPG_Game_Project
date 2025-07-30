@@ -16,17 +16,20 @@ public:
     Equipment() = default;
     Equipment(const std::string& name,
               int attackBonus,
-              int defenseBonus);
+              int defenseBonus,
+              int durability);
 
     // 访问器
     const std::string& getName() const;
     int getAttackBonus() const;
     int getDefenseBonus() const;
+    int getDurability() const;
 
     // 修改器
     void setName(const std::string& name);
     void setAttackBonus(int bonus);
     void setDefenseBonus(int bonus);
+    void setDurability(int d);
 
     // 文本描述
     std::string toString() const;
@@ -38,6 +41,7 @@ private:
     std::string name_;
     int attackBonus_  = 0;
     int defenseBonus_ = 0;
+    int durability_   = 100;
 };
 
 #endif 

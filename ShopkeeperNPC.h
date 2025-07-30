@@ -2,6 +2,7 @@
 #define SHOPKEEPERNPC_H
 
 #include "NPC.h"
+#include "Player.h"
 #include "Equipment.h"
 #include <map>
 #include <string>
@@ -15,7 +16,7 @@ using namespace std;
 
 class ShopkeeperNPC : public NPC {
 public:
-    ShopkeeperNPC(const std::string& name, const std::string& description, const std::string& systemPrompt);
+    ShopkeeperNPC(Player* player /*构造时传入玩家指针*/, const std::string& name, const std::string& description, const std::string& systemPrompt);
     virtual ~ShopkeeperNPC();
 
     /* 购买一件商品 */
@@ -37,6 +38,8 @@ private:
 
     map<std::string, InventoryItem> inventory_;
     bool inventoryGenerated_{false};
+
+    Player* player_;      //新增持有玩家指针
 };
 
 #endif

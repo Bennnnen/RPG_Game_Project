@@ -34,15 +34,15 @@ string NPC::getSystemPrompt() const {
 }
 
 bool NPC::isAvailable() const{
-    return false;
+    return isAvailable_;
 }
 
 void NPC::setAvailable(bool avail){
-
+    isAvailable_ = avail;
 }
 
 void NPC::addTopic(const std::string &topic){
-
+    availableTopics_.push_back(topic);
 }
 
 vector<string> NPC::getAvailableTopics() const {

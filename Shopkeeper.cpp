@@ -7,8 +7,8 @@
 using namespace std;
 
 
-ShopkeeperNPC::ShopkeeperNPC(const std::string& name, const std::string& description, const std::string& systemPrompt)
-    : NPC(name, description, systemPrompt)
+ShopkeeperNPC::ShopkeeperNPC(Player* player, const std::string& name, const std::string& description, const std::string& systemPrompt)
+    : NPC(name, description, systemPrompt), player_(player) //玩家指针存入成员
 {
     addTopic("查看商品");
     addTopic("购买 <商品名>");
@@ -40,12 +40,20 @@ void ShopkeeperNPC::generateInventory(OpenAIClient* aiClient) {
     //提取各项属性，创建InventoryItem，然后按名字存到商店的库存
     for (auto& obj : arr) {
         InventoryItem item;
-        item.equipTemplate.name         = obj.at("name").get<string>();
+        /*item.equipTemplate.name         = obj.at("name").get<string>();
         item.equipTemplate.attackBonus  = obj.at("attackBonus").get<int>();
         item.equipTemplate.defenseBonus = obj.at("defenseBonus").get<int>();
         item.equipTemplate.durability   = obj.at("durability").get<int>();
         item.price                      = obj.at("price").get<int>();
-        inventory_[item.equipTemplate.name] = item;
+        inventory_[item.equipTemplate.name] = item;*/
+        item.equipTemplate = Equipment(
+            obj.at("name").get<string>(),
+            obj.at("attackBonus").get<int>(),
+            obj.at("defenseBonus").get<int>(),
+            obj.at("durability").get<int>()
+        );
+        item.price = obj.at("price").get<int>();
+        inventory_[item.equipTemplate.getName()] = item;
     }
     
 }

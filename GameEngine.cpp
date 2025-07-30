@@ -7,7 +7,7 @@ bool GameEngine::initialize()
 {
     player_ = make_unique<Player>("Hero","Agility");
     openAIClient_ = make_unique<OpenAIClient>("test");
-    //initializeNPCs();
+    initializeNPCs();
     isRunning_ = true;
     return true;
 }
@@ -16,6 +16,7 @@ void GameEngine::initializeNPCs()
 {
     // 生成商人 NPC，使用中文名称以匹配内置交互命令
     auto shopkeeper = make_unique<ShopkeeperNPC>(
+        player_.get(),        //传入player
         "商人",
         "一个友好的商店老板",
         "你是游戏中的商店老板，负责管理商品、处理购买请求并与玩家互动。"
